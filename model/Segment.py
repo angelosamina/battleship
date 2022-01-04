@@ -4,6 +4,7 @@ from model.Coordonnees import type_coordonnees
 from model.Etat import type_etat_segment
 from model.Constantes import *
 
+
 #
 # définit un segment de bateau :
 # Un segment de bateau est un dictionnaire contenant les couples (clé, valeur) suivants :
@@ -27,3 +28,40 @@ def type_segment(objet: dict) -> bool:
            and type_etat_segment(objet[const.SEGMENT_ETAT])
 
 
+########################################################################################################################
+def construireSegment (coord : tuple = None) -> dict :
+    if not type_coordonnees(coord) :
+        raise ValueError(f"construireSegment : le paramètre {coord} ne correspond pas à des coordonnées.")
+    segment ={
+        const.SEGMENT_COORDONNEES:coord,
+        const.SEGMENT_ETAT:const.INTACT
+    }
+    return segment
+########################################################################################################################
+def getCoordonneesSegment (segment : dict) -> tuple :
+    if not type_segment(segment) :
+        raise ValueError(f"« getCoordonneesSegment : le paramètre {segment} n’est pas de type Segment.")
+    coord = segment.get(const.SEGMENT_COORDONNEES)
+    return coord
+########################################################################################################################
+def getEtatSegment (segment : dict) -> str :
+    if not type_segment(segment) :
+        raise ValueError(f"« getCoordonneesSegment : le paramètre {segment} n’est pas de type Segment.")
+    etat = segment.get(const.SEGMENT_ETAT)
+    return etat
+########################################################################################################################
+def setCoordonneesSegment (segment : dict, coord : tuple) -> None :
+    if not type_segment(segment) :
+        raise ValueError(f"« getCoordonneesSegment : le paramètre {segment} n’est pas de type Segment.")
+    if not type_coordonnees(coord) :
+        raise ValueError(f"getCoordonneesSegment : le paramètre {coord} ne correspond pas à des coordonnées.")
+    segment [const.SEGMENT_COORDONNEES] = coord
+    return None
+########################################################################################################################
+def setEtatSegment (segment : dict, etat : str) -> None :
+    if not type_segment(segment) :
+        raise ValueError(f"« setEtatSegment : le paramètre {segment} n’est pas de type Segment.")
+    if not type_etat_segment(etat) :
+        raise ValueError(f"setEtatSegment : le paramètre {etat} ne correspond pas à un etat.")
+    segment [const.SEGMENT_ETAT] = etat
+    return None
