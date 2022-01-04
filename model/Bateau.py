@@ -30,7 +30,7 @@ def type_bateau(bateau: dict) -> bool:
 ########################################################################################################################
 def construireBateau (nom : str) -> dict :
     if not nom in const.BATEAUX_CASES :
-        raise ValueError(f"« nom : le paramètre {nom} n’est pas un nom.")
+        raise ValueError(f"Le paramètre {nom} n’est pas un nom.")
     lst = []
     for i in range(const.BATEAUX_CASES[nom]) :
         a = construireSegment()
@@ -40,4 +40,13 @@ def construireBateau (nom : str) -> dict :
         const.BATEAU_SEGMENTS : lst
     }
     return bateau
+########################################################################################################################
+def getNomBateau(bateau : dict) -> str :
+    if not type_bateau(bateau) :
+        raise ValueError(f"Le paramètre {bateau} n’est pas un bateau.")
+    nomBateau = bateau.get(const.BATEAU_NOM)
+    return nomBateau
+########################################################################################################################
+
+
 
