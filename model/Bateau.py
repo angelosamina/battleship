@@ -8,7 +8,7 @@
 #   La taille du bateau n'est pas stockée car elle correspond à la taille de la liste des listes [coordonnées, état]
 #
 
-from model.Segment import type_segment
+from model.Segment import type_segment, construireSegment
 from model.Constantes import *
 
 
@@ -27,4 +27,17 @@ def type_bateau(bateau: dict) -> bool:
         len(bateau[const.BATEAU_SEGMENTS]) == const.BATEAUX_CASES[bateau[const.BATEAU_NOM]] and \
         all([type_segment(s) for s in bateau[const.BATEAU_SEGMENTS]])
 
+########################################################################################################################
+def construireBateau (nom : str) -> dict :
+    if not nom in const.BATEAUX_CASES :
+        raise ValueError(f"« nom : le paramètre {nom} n’est pas un nom.")
+    lst = []
+    for i in range(const.BATEAUX_CASES[nom]) :
+        a = construireSegment()
+        lst.append(a)
+    bateau ={
+        const.BATEAU_NOM : nom,
+        const.BATEAU_SEGMENTS : lst
+    }
+    return bateau
 

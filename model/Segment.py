@@ -62,6 +62,6 @@ def setEtatSegment (segment : dict, etat : str) -> None :
     if not type_segment(segment) :
         raise ValueError(f"« setEtatSegment : le paramètre {segment} n’est pas de type Segment.")
     if not type_etat_segment(etat) :
-        raise ValueError(f"setEtatSegment : le paramètre {etat} ne correspond pas à un etat.")
+        raise ValueError(f"setEtatSegment : le paramètre {etat} ne correspond pas à un Etat.")
     segment [const.SEGMENT_ETAT] = etat
     return None
