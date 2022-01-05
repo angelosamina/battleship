@@ -61,4 +61,16 @@ def getBateauxJoueur(joueur : dict) -> list :
     bateauxJoueur = joueur.get(const.JOUEUR_LISTE_BATEAUX)
     print(bateauxJoueur)
     return bateauxJoueur
+########################################################################################################################
+def getGrilleTirsJoueur(joueur : dict) -> list :
+    if not type_joueur(joueur):
+        raise ValueError(f"Le paramètre {joueur} ne correspond pas à un joueur.")
+    grilleJoueur = joueur.get(const.JOUEUR_GRILLE_TIRS)
+    return grilleJoueur
 
+def getGrilleTirsAdversaire(joueur : dict) -> list :
+    if not type_joueur(joueur):
+        raise ValueError(f"Le paramètre {joueur} ne correspond pas à un joueur.")
+    grilleJoueurAdvers = joueur.get(const.JOUEUR_GRILLE_ADVERSAIRE) 
+    return grilleJoueurAdvers
+########################################################################################################################
