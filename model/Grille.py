@@ -31,5 +31,13 @@ def type_grille(g: list) -> bool:
                 j += 1
             i += 1
     return res
-
+########################################################################################################################
+def construireGrille() -> list :
+    grille = []
+    for i in range (const.DIM) :
+        ligne = []
+        for j in range (const.DIM) :
+            ligne.append(None)
+        grille.append(ligne)
+    return grille
 
