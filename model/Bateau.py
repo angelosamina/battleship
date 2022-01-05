@@ -41,12 +41,17 @@ def construireBateau (nom : str) -> dict :
     }
     return bateau
 ########################################################################################################################
-def getNomBateau(bateau : dict) -> str :
+def getNomBateau (bateau : dict) -> str :
     if not type_bateau(bateau) :
         raise ValueError(f"Le paramètre {bateau} n’est pas un bateau.")
     nomBateau = bateau.get(const.BATEAU_NOM)
     return nomBateau
 ########################################################################################################################
-
+def getTailleBateau (bateau : dict) -> list :
+    if not type_bateau(bateau) :
+        raise ValueError(f"Le paramètre {bateau} n’est pas un bateau.")
+    taille = len(bateau.get(const.BATEAU_SEGMENTS))
+    return taille
+########################################################################################################################
 
 
