@@ -40,19 +40,19 @@ def construireSegment (coord : tuple = None) -> dict :
 ########################################################################################################################
 def getCoordonneesSegment (segment : dict) -> tuple :
     if not type_segment(segment) :
-        raise ValueError(f"« getCoordonneesSegment : le paramètre {segment} n’est pas de type Segment.")
+        raise ValueError(f"getCoordonneesSegment : le paramètre {segment} n’est pas de type Segment.")
     coord = segment.get(const.SEGMENT_COORDONNEES)
     return coord
 ########################################################################################################################
 def getEtatSegment (segment : dict) -> str :
     if not type_segment(segment) :
-        raise ValueError(f"« getCoordonneesSegment : le paramètre {segment} n’est pas de type Segment.")
+        raise ValueError(f"getCoordonneesSegment : le paramètre {segment} n’est pas de type Segment.")
     etat = segment.get(const.SEGMENT_ETAT)
     return etat
 ########################################################################################################################
 def setCoordonneesSegment (segment : dict, coord : tuple) -> None :
     if not type_segment(segment) :
-        raise ValueError(f"« getCoordonneesSegment : le paramètre {segment} n’est pas de type Segment.")
+        raise ValueError(f"getCoordonneesSegment : le paramètre {segment} n’est pas de type Segment.")
     if not type_coordonnees(coord) :
         raise ValueError(f"getCoordonneesSegment : le paramètre {coord} ne correspond pas à des coordonnées.")
     segment [const.SEGMENT_COORDONNEES] = coord

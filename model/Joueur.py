@@ -1,7 +1,6 @@
 # Joueur.py
 
 from model.Bateau import type_bateau
-from model.Grille import type_grille
 from model.Constantes import *
 
 #
@@ -12,6 +11,7 @@ from model.Constantes import *
 #  const.JOUEUR_GRILLE_ADVERSAIRE : une grille des tirs de l'adversaire pour tester la fonction de tir
 #  de l'adversaire.
 #
+from model.Grille import *
 
 
 def type_joueur(joueur: dict) -> bool:
@@ -28,4 +28,22 @@ def type_joueur(joueur: dict) -> bool:
         and type_grille(joueur[const.JOUEUR_GRILLE_TIRS]) \
         and all(type_bateau(v) for v in joueur[const.JOUEUR_LISTE_BATEAUX])
 
+########################################################################################################################
+def construireJoueur(nom : str, nomBateaux : list) -> dict :
+    bateauxJoueur = []
+    bateaux = []
 
+    bateaux.append(const.BATEAUX_CASES.keys())
+
+    for i in nomBateaux :
+        for j in bateaux :
+            if (i==j) :
+                bateauxJoueur.append(j)
+
+    joueur = {
+        const.JOUEUR_NOM : nom,
+        const.JOUEUR_LISTE_BATEAUX : bateauxJoueur,
+        const.JOUEUR_GRILLE_TIRS :construireGrille(),
+        const.JOUEUR_GRILLE_ADVERSAIRE : construireGrille()
+    }
+    return joueur
