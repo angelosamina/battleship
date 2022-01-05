@@ -47,3 +47,9 @@ def construireJoueur(nom : str, nomBateaux : list) -> dict :
         const.JOUEUR_GRILLE_ADVERSAIRE : construireGrille()
     }
     return joueur
+########################################################################################################################
+def getNomJoueur(joueur : dict) -> str :
+    if not type_joueur(joueur) :
+        raise ValueError(f"Le paramètre {joueur} ne correspond pas à un joueur.")
+    nomJoueur = joueur.get(const.JOUEUR_NOM)
+    return nomJoueur
