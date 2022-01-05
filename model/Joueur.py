@@ -54,5 +54,11 @@ def getNombreBateauxJoueur(joueur : dict) -> int :
         raise ValueError(f"Le paramètre {joueur} ne correspond pas à un joueur.")
     bateauxJoueur = joueur.get(const.JOUEUR_LISTE_BATEAUX)
     return len(bateauxJoueur)
-
+########################################################################################################################
+def getBateauxJoueur(joueur : dict) -> list :
+    if not type_joueur(joueur):
+        raise ValueError(f"Le paramètre {joueur} ne correspond pas à un joueur.")
+    bateauxJoueur = joueur.get(const.JOUEUR_LISTE_BATEAUX)
+    print(bateauxJoueur)
+    return bateauxJoueur
 
