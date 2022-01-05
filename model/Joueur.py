@@ -1,6 +1,6 @@
 # Joueur.py
 
-from model.Bateau import type_bateau
+from model.Bateau import type_bateau, construireBateau
 from model.Constantes import *
 
 #
@@ -31,14 +31,9 @@ def type_joueur(joueur: dict) -> bool:
 ########################################################################################################################
 def construireJoueur(nom : str, nomBateaux : list) -> dict :
     bateauxJoueur = []
-    bateaux = []
-
-    bateaux.append(const.BATEAUX_CASES.keys())
-
     for i in nomBateaux :
-        for j in bateaux :
-            if (i==j) :
-                bateauxJoueur.append(j)
+        a = construireBateau(i)
+        bateauxJoueur.append(a)
 
     joueur = {
         const.JOUEUR_NOM : nom,
@@ -53,3 +48,11 @@ def getNomJoueur(joueur : dict) -> str :
         raise ValueError(f"Le paramètre {joueur} ne correspond pas à un joueur.")
     nomJoueur = joueur.get(const.JOUEUR_NOM)
     return nomJoueur
+########################################################################################################################
+def getNombreBateauxJoueur(joueur : dict) -> int :
+    if not type_joueur(joueur) :
+        raise ValueError(f"Le paramètre {joueur} ne correspond pas à un joueur.")
+    bateauxJoueur = joueur.get(const.JOUEUR_LISTE_BATEAUX)
+    return len(bateauxJoueur)
+
+
