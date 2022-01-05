@@ -111,7 +111,7 @@ def getSegmentBateau (bateau : dict, n : object) -> dict :
                     segment = a[i]
                 i += 1
             if b != 1 :
-                raise ValueError(f"Le paramettre {type(n)} ne correspond pas")
+                raise ValueError(f"Le paramètre {type(n)} ne correspond pas")
     else :
         raise ValueError(f"Le type du second paramètre {type(n)} ne correspond pas…")
     return segment
@@ -129,6 +129,14 @@ def setSegmentBateau (bateau : dict, n : int, segment : dict ) -> None :
 
     a = bateau[const.BATEAU_SEGMENTS]
     a[n] = segment
-
     return None
+########################################################################################################################
+def getCoordonneesBateau (bateau : dict) -> list :
+    if not type_bateau(bateau) :
+        raise ValueError(f"Le paramètre {bateau} n’est pas un bateau.")
+    coord = []
+    a = bateau[const.BATEAU_SEGMENTS]
+    for i in range(len(a)) :
+        coord.append(a[i][const.SEGMENT_COORDONNEES])
+    return coord
 
