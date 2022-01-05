@@ -39,5 +39,5 @@ def construireGrille() -> list :
         for j in range (const.DIM) :
             ligne.append(None)
         grille.append(ligne)
-    return grille
+    return grill
 
