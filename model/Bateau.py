@@ -7,7 +7,7 @@
 #       Si le bateau n'est pas positionné, les coordonnées valent None et les états valent const.RATE
 #   La taille du bateau n'est pas stockée car elle correspond à la taille de la liste des listes [coordonnées, état]
 #
-from model.Coordonnees import type_coordonnees
+from model.Coordonnees import type_coordonnees, sontVoisins
 from model.Grille import construireGrille
 from model.Segment import type_segment, construireSegment
 from model.Constantes import *
@@ -169,5 +169,28 @@ def estPlaceBateau (bateau : dict) -> bool :
             rep = False
         i +=1
     return rep
+########################################################################################################################
+def sontVoisinsBateau (bateau1 : dict, bateau2 : dict) -> bool :
+    if not type_bateau(bateau1) :
+        raise ValueError(f"Le paramètre {bateau1} n’est pas un bateau.")
+    if not type_bateau(bateau2) :
+        raise ValueError(f"Le paramètre {bateau2} n’est pas un bateau.")
+    rep = False
+
+    coordBateau1 = getCoordonneesBateau(bateau1)
+    coordBateau2 = getCoordonneesBateau(bateau2)
+
+    if estPlaceBateau(bateau1) and estPlaceBateau(bateau2):
+        for i in coordBateau1 :
+            for j in coordBateau2 :
+                if sontVoisins(i,j):
+                    rep = True
+    return rep
+
+
+
+
+
+
 
 
