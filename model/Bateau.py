@@ -215,7 +215,7 @@ def reinitialiserBateau(bateau : dict) -> None :
         raise ValueError(f"Le paramètre {bateau} ne correspond pas un bateau.")
     for i in bateau[const.BATEAU_SEGMENTS]:
         setCoordonneesSegment(i, None)
-        setEtatSegment(i,const.INTACT)
+        setEtatSegment(i,const.INTACT
     return None
 ########################################################################################################################
 
