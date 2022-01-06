@@ -5,6 +5,7 @@
 
 import pygame
 
+from model.Manuel import placerBateauxManuel
 from view import window
 
 from model.Constantes import *
@@ -14,7 +15,7 @@ def main_test():
     j = construireJoueur("Test", [const.PORTE_AVION, const.CUIRASSE, const.CROISEUR, const.TORPILLEUR])
     # j = construireJoueur("Test", [const.PORTE_AVION, const.CUIRASSE])
     window.afficher(j)
-    window.placer_bateaux()
+    placerBateauxManuel(j)
     window.set_action("Pour terminer, cliquez dans la grille de DROITE")
     window.get_clicked_cell(2)
 
