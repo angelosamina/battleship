@@ -218,9 +218,20 @@ def reinitialiserBateau(bateau : dict) -> None :
         setEtatSegment(i,const.INTACT)
     return None
 ########################################################################################################################
+def contientSegmentBateau(bateau : dict, coord : tuple) -> bool :
+    if not type_bateau(bateau) :
+        raise ValueError(f"Le paramètre {bateau} ne correspond pas un bateau.")
+    if not type_coordonnees(coord):
+        raise ValueError(f"Le paramètre {coord} ne correspond pas à des coordonnées.")
 
-
-
+    rep = False
+    a = list(getCoordonneesBateau(bateau))
+    i = 0
+    while i < len(a) :
+        if a[i] == coord :
+            rep = True
+        i +=1
+    return rep
 
 
 
