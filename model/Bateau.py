@@ -9,7 +9,7 @@
 #
 from model.Coordonnees import type_coordonnees, sontVoisins
 from model.Grille import construireGrille
-from model.Segment import type_segment, construireSegment
+from model.Segment import type_segment, construireSegment, setCoordonneesSegment
 from model.Constantes import *
 
 
@@ -186,6 +186,29 @@ def sontVoisinsBateau (bateau1 : dict, bateau2 : dict) -> bool :
                 if sontVoisins(i,j):
                     rep = True
     return rep
+########################################################################################################################
+def placerBateau(bateau : dict, first_case : tuple, pos : bool ) -> None :
+    if not type_bateau(bateau) :
+        raise ValueError(f"Le paramètre {bateau} ne correspond pas un bateau.")
+    if not type_coordonnees(first_case):
+        raise ValueError(f"Le paramètre {first_case} ne correspond pas à des coordonnées.")
+    if  first_case == None:
+        raise ValueError(f"Le paramètre {first_case} ne correspond pas à des coordonnées.")
+    if not peutPlacerBateau(bateau,first_case,pos) :
+        raise RuntimeError(f"Le bateau {bateau} ne peut pas etre placé a cette position!")
+
+    a = 0
+    li = first_case[0]
+    co = first_case[1]
+    if pos == True :
+        for i in bateau[const.BATEAU_SEGMENTS] :
+            setCoordonneesSegment(i,(li,first_case[1]+a))
+            a+= 1
+    if pos == False :
+        for i in bateau[const.BATEAU_SEGMENTS] :
+            setCoordonneesSegment(i,(first_case[0]+a,co))
+            a+= 1
+    return None
 
 
 
