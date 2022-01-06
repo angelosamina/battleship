@@ -8,6 +8,7 @@
 #   La taille du bateau n'est pas stockée car elle correspond à la taille de la liste des listes [coordonnées, état]
 #
 from model.Coordonnees import type_coordonnees
+from model.Grille import construireGrille
 from model.Segment import type_segment, construireSegment
 from model.Constantes import *
 
@@ -68,7 +69,7 @@ def getNomBateau (bateau : dict) -> str :
     nomBateau = bateau.get(const.BATEAU_NOM)
     return nomBateau
 ########################################################################################################################
-def getTailleBateau (bateau : dict) -> list :
+def getTailleBateau (bateau : dict) -> int :
     if not type_bateau(bateau) :
         raise ValueError(f"Le paramètre {bateau} n’est pas un bateau.")
     taille = len(bateau.get(const.BATEAU_SEGMENTS))
@@ -139,4 +140,24 @@ def getCoordonneesBateau (bateau : dict) -> list :
     for i in range(len(a)) :
         coord.append(a[i][const.SEGMENT_COORDONNEES])
     return coord
+########################################################################################################################
+def peutPlacerBateau (bateau : dict, first_case : tuple, pos : bool) ->bool :
+    if not type_bateau(bateau) :
+        raise ValueError(f"Le paramètre {bateau} n’est pas un bateau.")
+    if not type_coordonnees(first_case):
+        raise ValueError(f"Le paramètre {first_case} ne correspond pas à des coordonnées.")
+    rep = True
+    tailleBateau = getTailleBateau(bateau)
+    liCoord = first_case[0]
+    colCord = first_case[1]
+    if pos  :
+        if (colCord + tailleBateau) > const.DIM :
+            rep = False
+    if not pos :
+        if (liCoord + tailleBateau) > const.DIM :
+            rep = False
+    return rep
+
+
+
 
