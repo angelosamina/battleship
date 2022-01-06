@@ -37,17 +37,10 @@ def sontVoisins(coord1 : tuple, coord2 : tuple) -> bool :
     coCoord1 = coord1[1]
 
 # Création d'une liste avec toutes les cases voisines possible autour de la première coordonnée.
-    coordVoisins = [
-        [liCoord1 - 1, coCoord1 - 1],
-        [liCoord1 - 1, coCoord1],
-        [liCoord1 - 1, coCoord1 + 1],
-        [liCoord1, coCoord1 - 1],
-        [liCoord1, coCoord1],
-        [liCoord1, coCoord1 + 1],
-        [liCoord1 + 1, coCoord1 - 1],
-        [liCoord1 + 1, coCoord1],
-        [liCoord1 + 1, coCoord1 + 1]
-    ]
+    coordVoisins = []
+    for x in range(-1, 2):
+        for y in range(-1, 2):
+            coordVoisins.append([liCoord1 + x, coCoord1 + y])
     coord2List = list(coord2)
 # S'assurer que la deuxième coordonnée est différente de la première et n'est pas présentes dans
 # la liste des cases voisines de la première coordonnée.
