@@ -8,6 +8,7 @@
 #   La taille du bateau n'est pas stockée car elle correspond à la taille de la liste des listes [coordonnées, état]
 #
 from model.Coordonnees import type_coordonnees, sontVoisins
+from model.Etat import type_etat_segment
 from model.Grille import construireGrille
 from model.Segment import type_segment, construireSegment, setCoordonneesSegment, setEtatSegment
 from model.Constantes import *
@@ -232,8 +233,19 @@ def contientSegmentBateau(bateau : dict, coord : tuple) -> bool :
             rep = True
         i +=1
     return rep
+########################################################################################################################
+def setEtatSegmentBateau(bateau : dict, coord : tuple, etat : str) -> None :
+    if not type_bateau(bateau) :
+        raise ValueError(f"Le paramètre {bateau} ne correspond pas un bateau.")
+    if not type_coordonnees(coord):
+        raise ValueError(f"Le paramètre {coord} ne correspond pas à des coordonnées.")
+    if not type_etat_segment(etat) :
+        raise ValueError(f"Le paramètre {etat} ne correspond pas à un Etat.")
 
+    a = getSegmentBateau(bateau,coord)
+    setEtatSegment(a,etat)
 
+    return None
 
 
 
