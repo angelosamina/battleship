@@ -1,6 +1,7 @@
 # Joueur.py
 
-from model.Bateau import type_bateau, construireBateau
+from model.Bateau import type_bateau, construireBateau, getCoordonneesBateau, peutPlacerBateau, sontVoisinsBateau, \
+    reinitialiserBateau
 from model.Constantes import *
 
 #
@@ -11,6 +12,7 @@ from model.Constantes import *
 #  const.JOUEUR_GRILLE_ADVERSAIRE : une grille des tirs de l'adversaire pour tester la fonction de tir
 #  de l'adversaire.
 #
+from model.Coordonnees import type_coordonnees
 from model.Grille import *
 
 
@@ -74,3 +76,35 @@ def getGrilleTirsAdversaire(joueur : dict) -> list :
     grilleJoueurAdvers = joueur.get(const.JOUEUR_GRILLE_ADVERSAIRE) 
     return grilleJoueurAdvers
 ########################################################################################################################
+"""def placerBateauJoueur (joueur : dict, bateau : dict, first_case : tuple, pos :bool) -> bool :
+    if not type_joueur(joueur):
+        raise ValueError(f"Le paramètre {joueur} ne correspond pas à un joueur.")
+    if not type_bateau(bateau) :
+        raise ValueError(f"Le paramètre {bateau} ne correspond pas un bateau.")
+    if not type_coordonnees(first_case):
+        raise ValueError(f"Le paramètre {first_case} ne correspond pas à des coordonnées.")
+    if first_case == None:
+        raise ValueError(f"Le paramètre {first_case} ne correspond pas à des coordonnées.")
+    if bateau not in joueur[const.JOUEUR_LISTE_BATEAUX] :
+        raise RuntimeError (f"Le bateau {bateau} ne fais pas partis des bateaux du joueur. ")
+
+    rep = True
+    coordBateau = getCoordonneesBateau(bateau)
+
+    for i in coordBateau:
+        if i == None :
+            rep = False
+
+    if peutPlacerBateau(bateau,first_case,pos) :
+        for i in joueur[const.JOUEUR_LISTE_BATEAUX] :
+            if bateau not in joueur[const.JOUEUR_LISTE_BATEAUX]:
+                if sontVoisinsBateau(i,bateau) :
+                    rep = False
+    return rep"""
+########################################################################################################################
+def reinitialiserBateauxJoueur(joueur : dict) -> None :
+    if not type_joueur(joueur):
+        raise ValueError(f"Le paramètre {joueur} ne correspond pas à un joueur.")
+    for i in joueur[const.JOUEUR_LISTE_BATEAUX]:
+        reinitialiserBateau(i)
+    return None
