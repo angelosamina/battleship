@@ -209,7 +209,13 @@ def placerBateau(bateau : dict, first_case : tuple, pos : bool ) -> None :
             setCoordonneesSegment(i,(first_case[0]+a,co))
             a+= 1
     return None
-
+########################################################################################################################
+def reinitialiserBateau(bateau : dict) -> None :
+    if not type_bateau(bateau) :
+        raise ValueError(f"Le paramètre {bateau} ne correspond pas un bateau.")
+    for i in bateau[const.BATEAU_SEGMENTS]:
+        setCoordonneesSegment(i, None)
+    return None
 
 
 
