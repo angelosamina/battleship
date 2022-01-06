@@ -150,14 +150,24 @@ def peutPlacerBateau (bateau : dict, first_case : tuple, pos : bool) ->bool :
     tailleBateau = getTailleBateau(bateau)
     liCoord = first_case[0]
     colCord = first_case[1]
-    if pos  :
+    if pos :
         if (colCord + tailleBateau) > const.DIM :
             rep = False
     if not pos :
         if (liCoord + tailleBateau) > const.DIM :
             rep = False
     return rep
-
-
+########################################################################################################################
+def estPlaceBateau (bateau : dict) -> bool :
+    if not type_bateau(bateau) :
+        raise ValueError(f"Le paramètre {bateau} n’est pas un bateau.")
+    rep = True
+    a = list(getCoordonneesBateau(bateau))
+    i = 0
+    while i < len(a) :
+        if a[i] == None :
+            rep = False
+        i +=1
+    return rep
 
 
