@@ -9,7 +9,7 @@
 #
 from model.Coordonnees import type_coordonnees, sontVoisins
 from model.Grille import construireGrille
-from model.Segment import type_segment, construireSegment, setCoordonneesSegment
+from model.Segment import type_segment, construireSegment, setCoordonneesSegment, setEtatSegment
 from model.Constantes import *
 
 
@@ -215,7 +215,10 @@ def reinitialiserBateau(bateau : dict) -> None :
         raise ValueError(f"Le paramètre {bateau} ne correspond pas un bateau.")
     for i in bateau[const.BATEAU_SEGMENTS]:
         setCoordonneesSegment(i, None)
+        setEtatSegment(i,const.INTACT)
     return None
+########################################################################################################################
+
 
 
 
